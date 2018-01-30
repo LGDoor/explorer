@@ -2,6 +2,7 @@ angular.module('ethExplorer')
     .controller('blockInfosCtrl', function ($rootScope, $scope, $location, $routeParams,$q) {
 
 	var web3 = $rootScope.web3;
+    abiDecoder.addABI(abi);
 
         $scope.init = function()
         {
@@ -98,6 +99,7 @@ angular.module('ethExplorer')
                 to: result.to,
                 gas: result.gas,
                 input: result.input,
+                text: JSON.stringify(abiDecoder.decodeMethod(result.input), null, 2),
                 value: result.value
               }
               $scope.$apply(
